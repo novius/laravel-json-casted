@@ -1,0 +1,54 @@
+{
+    "name": "novius/laravel-json-casted",
+    "description": "Help to manage meta data on Laravel Eloquent model",
+    "keywords": [
+        "laravel",
+        "json",
+        "cast",
+        "eloquent"
+    ],
+    "license": "AGPL-3.0-or-later",
+    "homepage": "https://github.com/novius/laravel-json-casted",
+    "type": "library",
+    "support": {
+        "issues": "https://github.com/novius/laravel-json-casted/issues",
+        "source": "https://github.com/novius/laravel-json-casted"
+    },
+    "authors": [
+        {
+            "name": "Novius Agency",
+            "email": "team-developpeurs@novius.com",
+            "homepage": "https://www.novius.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "illuminate/support": "^10.0 || ^11.0",
+        "illuminate/database": "^10.0 || ^11.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.17.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Novius\\LaravelJsonCasted\\": "src"
+        }
+    },
+    "scripts": {
+        "cs-fix": "./vendor/bin/pint -v",
+        "lint": "@composer cs-fix -- --test"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Novius\\LaravelJsonCasted\\LaravelJsonCastedServiceProvider"
+            ]
+        }
+    }
+}
