@@ -20,6 +20,10 @@ class JsonCastable implements CastsAttributes
         }
 
         $value = json_decode($value, true, 512, JSON_THROW_ON_ERROR);
+        if (is_array($this->casts)) {
+            return new JsonCasted($value, $this->casts);
+        }
+
         if (method_exists($model, $this->casts)) {
             $cast = $model->{$this->casts}();
 
@@ -28,10 +32,6 @@ class JsonCastable implements CastsAttributes
 
         if (is_subclass_of($this->casts, JsonCasted::class)) {
             return new $this->casts($value);
-        }
-
-        if (is_array($this->casts)) {
-            return new JsonCasted($value, $this->casts);
         }
 
         return new JsonCasted($value);
