@@ -24,13 +24,13 @@ composer require novius/laravel-json-casted
 
 ## Usage
 
-### Define casts by a method 
+### Define casts by a method
 
 ```php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Novius\LaravelJsonCasted\Classes\JsonCasted;
+use Novius\LaravelJsonCasted\Services\JsonCasted;
 
 class Post extends Model {
 
@@ -52,7 +52,7 @@ class Post extends Model {
 ```php
 namespace App\Casts;
 
-use Novius\LaravelJsonCasted\Classes\JsonCasted;
+use Novius\LaravelJsonCasted\Services\JsonCasted;
 
 class Extras extends JsonCasted {
 
