@@ -1,6 +1,6 @@
 {
     "name": "novius/laravel-json-casted",
-    "description": "Help to manage meta data on Laravel Eloquent model",
+    "description": "A package to cast json fields, each sub-keys is castable",
     "keywords": [
         "laravel",
         "json",
