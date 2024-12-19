@@ -40,7 +40,7 @@ class JsonCasted
                     public function __construct($value, $cast)
                     {
                         $this->setDateFormat('Y-m-d H:i:s');
-                        $this->casts = $this->ensureCastsAreStringValues(['attribute' => $cast]);
+                        $this->casts = ['attribute' => $cast];
                         $this->setAttribute('attribute', $value);
                     }
                 };
