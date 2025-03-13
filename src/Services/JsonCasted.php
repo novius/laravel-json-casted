@@ -33,6 +33,7 @@ class JsonCasted
         } else {
             $value = Arr::get($json, $key);
             if ($value !== null) {
+                /** @phpstan-ignore class.missingExtends */
                 $workingClass = new class($value, $cast)
                 {
                     use HasAttributes;

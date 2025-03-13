@@ -23,13 +23,13 @@
     ],
     "require": {
         "php": ">=8.2",
-        "illuminate/support": "^10.0 || ^11.0",
-        "illuminate/database": "^10.0 || ^11.0"
+        "laravel/framework": "^10.0 | ^11.0| ^12.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^9.0",
+        "larastan/larastan": "^2.0 | ^3.0",
         "laravel/pint": "^1.17.0",
-        "pestphp/pest": "^2.34.9"
+        "orchestra/testbench": "^9.0 | ^10.0",
+        "pestphp/pest": "^2.34.9 | ^v3.7.4"
     },
     "autoload": {
         "psr-4": {
@@ -42,9 +42,18 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/pest --colors=always",
-        "cs-fix": "./vendor/bin/pint -v",
-        "lint": "@composer cs-fix -- --test"
+        "test": [
+            "vendor/bin/pest --colors=always"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyse --memory-limit=1G"
+        ],
+        "cs-fix": [
+            "./vendor/bin/pint -v"
+        ],
+        "lint": [
+            "@composer cs-fix -- --test"
+        ]
     },
     "config": {
         "sort-packages": true,
