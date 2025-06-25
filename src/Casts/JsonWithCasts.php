@@ -3,6 +3,7 @@
 namespace Novius\LaravelJsonCasted\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Support\Fluent;
 use JsonException;
 use Novius\LaravelJsonCasted\Services\JsonCasted;
 
@@ -23,12 +24,10 @@ class JsonWithCasts implements CastsAttributes
         if (is_array($value) && method_exists($model, $this->getCastsMethod)) {
             $casts = $model->{$this->getCastsMethod}();
 
-            $value = JsonCasted::cast($value, $casts);
-
-            return $value;
+            return new Fluent(JsonCasted::cast($value, $casts));
         }
 
-        return $value;
+        return is_array($value) ? new Fluent($value) : $value;
     }
 
     /**

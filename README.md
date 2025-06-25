@@ -22,6 +22,15 @@ You can install the package via composer:
 composer require novius/laravel-json-casted
 ```
 
+If you use [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper/tree/master?tab=readme-ov-file#automatic-phpdocs-for-models), add `ModelHasJsonWithCastsHook` in its configuration file :
+
+```php
+    'model_hooks' => [
+        // ...
+        \Novius\NoviusCloud\Hooks\ModelHasJsonWithCastsHook::class,
+    ],
+```
+
 ## Usage
 
 ### Define casts by a method
@@ -56,7 +65,7 @@ use Novius\LaravelJsonCasted\Services\JsonCasted;
 
 class Extras extends JsonCasted {
 
-    protected $casts = [
+    protected static array $casts = [
         'date' => 'date:Y-m-d',
     ];
 }
@@ -81,6 +90,7 @@ class Post extends Model {
 ```php
 
     $model = Post::first();
+    // $model->extras is now a Fluent instance 
     // $model->extras->date is a now Carbon class 
     $model->extras->date->lt(now());
 ```
