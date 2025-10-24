@@ -27,7 +27,7 @@ If you use [laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper/t
 ```php
     'model_hooks' => [
         // ...
-        \Novius\NoviusCloud\Hooks\ModelHasJsonWithCastsHook::class,
+        \Novius\LaravelJsonCasted\Hooks\ModelHasJsonWithCastsHook::class,
     ],
 ```
 
