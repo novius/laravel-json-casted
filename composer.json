@@ -23,13 +23,14 @@
     ],
     "require": {
         "php": ">=8.2",
-        "laravel/framework": "^10.0 | ^11.0| ^12.0"
+        "laravel/framework": "^10.0 | ^11.0| ^12.0 | ^13.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.1",
         "larastan/larastan": "^2.0 | ^3.0",
+        "laravel/boost": "^2.1",
         "laravel/pint": "^1.17.0",
-        "orchestra/testbench": "^9.0 | ^10.0",
+        "orchestra/testbench": "^9.0 | ^10.0 | ^11.0",
         "pestphp/pest": "^2.34.9 | ^v3.7.4"
     },
     "autoload": {
@@ -39,7 +40,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Novius\\LaravelJsonCasted\\Tests\\": "tests"
+            "Novius\\LaravelJsonCasted\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "scripts": {
@@ -54,6 +58,18 @@
         ],
         "lint": [
             "@composer cs-fix -- --test"
+        ],
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
         ]
     },
     "config": {
