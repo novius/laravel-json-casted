@@ -38,22 +38,29 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: ['ubuntu-latest']
-        php-versions: ['8.2', '8.3', '8.4']
+        php-versions: ['8.2', '8.3', '8.4', '8.5']
         laravel: [ 10.*, 11.*, 12.*, 13.* ]
         dependency-version: [ prefer-stable ]
+        exclude:
+          - php-versions: '8.2'
+            laravel: 13.*
         include:
           - laravel: 13.*
             testbench: 11.*
             carbon: 3.*
+            boost: 2.*
           - laravel: 12.*
             testbench: 10.*
             carbon: 3.*
+            boost: 2.*
           - laravel: 11.*
             testbench: 9.*
             carbon: 2.*
+            boost: 2.*
           - laravel: 10.*
             testbench: 8.*
             carbon: 2.*
+            boost: 1.*
 
     name: test - P${{ matrix.php-versions }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
@@ -73,7 +80,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "nesbot/carbon:${{ matrix.carbon }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "nesbot/carbon:${{ matrix.carbon }}" "orchestra/testbench:${{ matrix.testbench }}" "laravel/boost:${{ matrix.boost }}" --no-interaction --no-update
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
       - name: Test
@@ -86,19 +93,29 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: ['ubuntu-latest']
-        php-versions: ['8.2', '8.3', '8.4']
-        laravel: [ 11.*, 12.*, 13.* ]
+        php-versions: ['8.2', '8.3', '8.4', '8.5']
+        laravel: [ 10.*, 11.*, 12.*, 13.* ]
         dependency-version: [ prefer-stable ]
+        exclude:
+          - php-versions: '8.2'
+            laravel: 13.*
         include:
           - laravel: 13.*
             testbench: 11.*
             carbon: 3.*
+            boost: 2.*
           - laravel: 12.*
             testbench: 10.*
             carbon: 3.*
+            boost: 2.*
           - laravel: 11.*
             testbench: 9.*
             carbon: 2.*
+            boost: 2.*
+          - laravel: 10.*
+            testbench: 8.*
+            carbon: 2.*
+            boost: 1.*
 
     name: phpstan - P${{ matrix.php-versions }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 
@@ -118,7 +135,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "nesbot/carbon:${{ matrix.carbon }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "nesbot/carbon:${{ matrix.carbon }}" "orchestra/testbench:${{ matrix.testbench }}" "laravel/boost:${{ matrix.boost }}" --no-interaction --no-update
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
 
       - name: PHPStan Static Analysis
