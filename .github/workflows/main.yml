@@ -44,6 +44,8 @@ jobs:
         exclude:
           - php-versions: '8.2'
             laravel: 13.*
+          - php-versions: '8.5'
+            laravel: 10.*
         include:
           - laravel: 13.*
             testbench: 11.*
@@ -99,6 +101,8 @@ jobs:
         exclude:
           - php-versions: '8.2'
             laravel: 13.*
+          - php-versions: '8.5'
+            laravel: 10.*
         include:
           - laravel: 13.*
             testbench: 11.*
