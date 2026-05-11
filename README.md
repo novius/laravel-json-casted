@@ -12,7 +12,7 @@ A package to cast json fields, each sub-keys is castable
 ## Requirements
 
 * PHP >= 8.2
-* Laravel 10.0
+* Laravel >= 10.0
 
 ## Installation
 
