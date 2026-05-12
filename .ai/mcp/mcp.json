@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "laravel-boost": {
+      "command": "/opt/php/php8.3/php-8.3.19-250506122712/bin/php",
+      "args": [
+        "/data/www-local/web/libs/laravel-json-casted/vendor/orchestra/testbench-core/laravel/artisan",
+        "boost:mcp"
+      ]
+    }
+  }
+}
